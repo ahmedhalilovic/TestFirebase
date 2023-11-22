@@ -47,65 +47,65 @@ class ViewController: UIViewController {
     }
     
     // MARK: Fetches values on start
-    // But only once and changed values will take effect only when app restarts
+     But only once and changed values will take effect only when app restarts
     
-//    func fetchValues() {
-//        
-//        //shows_new_ui
-//        
-//        let defaults: [String: NSObject] = [
-//            "shows_new_ui": false as NSObject,
-//            "shows_ui_inside": false as NSObject
-//        ]
-//        
-//        remoteConfig.setDefaults(defaults)
-//        
-//        let settings = RemoteConfigSettings()
-//        settings.minimumFetchInterval = 0
-//        remoteConfig.configSettings = settings
-//        
-//        updateUI(newUI: false)
-//        updateUI2(newUI: false)
-//         
-//        self.remoteConfig.fetch(withExpirationDuration: 0, completionHandler: { status, error in
-//            if status == .success, error == nil {
-//                
-//                do {
-//                    try self.remoteConfig.activate()
-//                    let value = self.remoteConfig.configValue(forKey: "shows_new_ui").boolValue
-//                    print("Fetched value: \(value)")
-//                    
-//                    DispatchQueue.main.async {
-//                        self.updateUI(newUI: value)
-//                    }
-//                } catch {
-//                    print("Error activating remote config: \(error)")
-//                }
-//            }else {
-//                print("something went wrong!")
-//            }
-//        })
-//        
-//        self.remoteConfig.fetch(withExpirationDuration: 0, completionHandler:   { status2, error in
-//            if status2 == .success, error == nil {
-//                
-//                do {
-//                    try self.remoteConfig.activate()
-//                    let value = self.remoteConfig.configValue(forKey: "shows_ui_inside").boolValue
-//                    print("Fetched value 2: \(value)")
-//                    
-//                    DispatchQueue.main.async {
-//                        self.updateUI2(newUI: value)
-//                    }
-//                } catch {
-//                    print("Error activating remote config2")
-//                }
-//            }else {
-//                print("something went wrong twice")
-//            }
-//        })
-//        
-//    }
+    func fetchValues() {
+        
+        //shows_new_ui
+        
+        let defaults: [String: NSObject] = [
+            "shows_new_ui": false as NSObject,
+            "shows_ui_inside": false as NSObject
+        ]
+        
+        remoteConfig.setDefaults(defaults)
+        
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 0
+        remoteConfig.configSettings = settings
+        
+        updateUI(newUI: false)
+        updateUI2(newUI: false)
+         
+        self.remoteConfig.fetch(withExpirationDuration: 0, completionHandler: { status, error in
+            if status == .success, error == nil {
+                
+                do {
+                    try self.remoteConfig.activate()
+                    let value = self.remoteConfig.configValue(forKey: "shows_new_ui").boolValue
+                    print("Fetched value: \(value)")
+                    
+                    DispatchQueue.main.async {
+                        self.updateUI(newUI: value)
+                    }
+                } catch {
+                    print("Error activating remote config: \(error)")
+                }
+            }else {
+                print("something went wrong!")
+            }
+        })
+        
+        self.remoteConfig.fetch(withExpirationDuration: 0, completionHandler:   { status2, error in
+            if status2 == .success, error == nil {
+                
+                do {
+                    try self.remoteConfig.activate()
+                    let value = self.remoteConfig.configValue(forKey: "shows_ui_inside").boolValue
+                    print("Fetched value 2: \(value)")
+                    
+                    DispatchQueue.main.async {
+                        self.updateUI2(newUI: value)
+                    }
+                } catch {
+                    print("Error activating remote config2")
+                }
+            }else {
+                print("something went wrong twice")
+            }
+        })
+        
+    }
     
     // MARK: Keeps values updated real-time
     
