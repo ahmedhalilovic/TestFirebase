@@ -136,7 +136,7 @@ class ViewController: UIViewController {
             }
             
             self.remoteConfig.activate() { changed2, error in
-                guard error == nil else { return print("neki problem 2") }
+                guard error == nil else { return print("neki problem koje je tipa 2") }
                 DispatchQueue.main.async {
                     self.updateUI2(newUI: self.remoteConfig.configValue(forKey: "shows_ui_inside").boolValue)
                 }
@@ -148,17 +148,17 @@ class ViewController: UIViewController {
     func updateUI(newUI: Bool) {
         if newUI {
             view2.isHidden = false
-            // blue
+            // blue color screen
         }
         else {
             view1.isHidden = false
-            // red
+            // red color screen
         }
     }
     
     func updateUI2(newUI: Bool) {
         if newUI {
-            // cyan
+            // cyan color screen
             view3.isHidden = false
         }else {
             view2.isHidden = true
