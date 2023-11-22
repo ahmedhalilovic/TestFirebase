@@ -145,6 +145,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // Functions for updating UIviews
     func updateUI(newUI: Bool) {
         if newUI {
             view2.isHidden = false
