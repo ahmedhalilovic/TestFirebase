@@ -8,8 +8,11 @@
 
 import UIKit
 import FirebaseRemoteConfig
+import FirebaseDatabase
 
 class ViewController: UIViewController {
+    
+    private let database = Database.database().reference()
     
     // System red background
     private let view1: UIView = {
@@ -38,9 +41,37 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let button = UIButton(frame: CGRect(x: 100,
+                                            y: 100,
+                                            width: 200,
+                                            height: 60))
+        button.setTitle("Test",
+                        for: .normal)
+        button.setTitleColor(.systemBlue, 
+                             for: .normal)
+        button.addTarget(self, 
+                         action: #selector(buttonAction),
+                         for: .touchUpInside)
+        
+        let button2 = UIButton(frame: CGRect(x: 100, 
+                                             y: 100,
+                                             width: 200,
+                                             height: 60))
+        button2.setTitle("Nemoj mene pressati", 
+                         for: .normal)
+        button2.setTitleColor(.systemRed,
+                              for: .normal)
+        button2.addTarget(self, 
+                          action: #selector(addNewEntry),
+                          for: .touchUpInside)
+        
         view.addSubview(view1)
         view.addSubview(view2)
         view.addSubview(view3)
+        
+        self.view1.addSubview(button)
+        self.view1.addSubview(button2)
         
  //        fetchValues()
          updateValues()
@@ -172,7 +203,21 @@ class ViewController: UIViewController {
         view1.frame = view.bounds
         view2.frame = view.bounds
         view3.frame = view.bounds
+        
     }
 
+    @objc
+    func buttonAction() {
+        print("Button pressed")
+    }
+    
+    @objc
+    func addNewEntry() {
+        print("Button 2 je pressed red alert")
+        database.child("Entries from button").setValue("value 1")
+    }
+    
 }
+
+
 

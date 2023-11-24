@@ -8,6 +8,7 @@ target 'TestFirebase' do
   # Pods for TestFirebase
 
 pod 'Firebase/Core'
-pod 'Firebase/RemoteConfig'  
+pod 'Firebase/RemoteConfig'
+pod 'FirebaseDatabase' 
 
 end
